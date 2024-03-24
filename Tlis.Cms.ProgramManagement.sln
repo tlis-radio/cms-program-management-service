@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57FBB872-53C9-4110-BF5A-0098669DA3FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tlis.Cms.ProgramManagement.Cli", "Tlis.Cms.ProgramManagement.Cli", "{24E1F1E4-0A58-4E79-A794-27DC6AEB6F62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tlis.Cms.ProgramManagement.Cli", "src\Tlis.Cms.ProgramManagement.Cli\src\Tlis.Cms.ProgramManagement.Cli.csproj", "{38AC73D8-40D4-4E5D-92F9-79D176BDB7BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tlis.Cms.ProgramManagement", "Tlis.Cms.ProgramManagement", "{88C0EAE5-F8A6-41FE-8AAA-9AECC50F0A06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{194CF7F2-8BA6-4D69-9E57-67E7180201A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tlis.Cms.ProgramManagement.Api", "src\Tlis.Cms.ProgramManagement\Api\src\Tlis.Cms.ProgramManagement.Api.csproj", "{CB5AC326-3BFC-4795-AC1F-FE323BC6BC24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{18A0E7FA-976B-452E-8FCD-87A9A712DED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tlis.Cms.ProgramManagement.Application", "src\Tlis.Cms.ProgramManagement\Application\src\Tlis.Cms.ProgramManagement.Application.csproj", "{633EF881-ACB3-478C-BE82-173CA7037B81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{60A19D30-5572-432C-90A3-2577CB2C4AC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tlis.Cms.ProgramManagement.Domain", "src\Tlis.Cms.ProgramManagement\Domain\src\Tlis.Cms.ProgramManagement.Domain.csproj", "{1A6CA948-9F75-4463-B897-5E7B3AA65F91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E7227EC0-CC7A-4A7A-AAD0-194555070375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tlis.Cms.ProgramManagement.Infrastructure", "src\Tlis.Cms.ProgramManagement\Infrastructure\src\Tlis.Cms.ProgramManagement.Infrastructure.csproj", "{41E6C28A-0CD4-48E4-AD8B-6AE525EAA7F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38AC73D8-40D4-4E5D-92F9-79D176BDB7BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AC73D8-40D4-4E5D-92F9-79D176BDB7BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AC73D8-40D4-4E5D-92F9-79D176BDB7BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AC73D8-40D4-4E5D-92F9-79D176BDB7BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB5AC326-3BFC-4795-AC1F-FE323BC6BC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB5AC326-3BFC-4795-AC1F-FE323BC6BC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB5AC326-3BFC-4795-AC1F-FE323BC6BC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB5AC326-3BFC-4795-AC1F-FE323BC6BC24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{633EF881-ACB3-478C-BE82-173CA7037B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{633EF881-ACB3-478C-BE82-173CA7037B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{633EF881-ACB3-478C-BE82-173CA7037B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{633EF881-ACB3-478C-BE82-173CA7037B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6CA948-9F75-4463-B897-5E7B3AA65F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6CA948-9F75-4463-B897-5E7B3AA65F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6CA948-9F75-4463-B897-5E7B3AA65F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6CA948-9F75-4463-B897-5E7B3AA65F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E6C28A-0CD4-48E4-AD8B-6AE525EAA7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E6C28A-0CD4-48E4-AD8B-6AE525EAA7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E6C28A-0CD4-48E4-AD8B-6AE525EAA7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E6C28A-0CD4-48E4-AD8B-6AE525EAA7F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24E1F1E4-0A58-4E79-A794-27DC6AEB6F62} = {57FBB872-53C9-4110-BF5A-0098669DA3FA}
+		{38AC73D8-40D4-4E5D-92F9-79D176BDB7BF} = {24E1F1E4-0A58-4E79-A794-27DC6AEB6F62}
+		{88C0EAE5-F8A6-41FE-8AAA-9AECC50F0A06} = {57FBB872-53C9-4110-BF5A-0098669DA3FA}
+		{194CF7F2-8BA6-4D69-9E57-67E7180201A2} = {88C0EAE5-F8A6-41FE-8AAA-9AECC50F0A06}
+		{CB5AC326-3BFC-4795-AC1F-FE323BC6BC24} = {194CF7F2-8BA6-4D69-9E57-67E7180201A2}
+		{18A0E7FA-976B-452E-8FCD-87A9A712DED0} = {88C0EAE5-F8A6-41FE-8AAA-9AECC50F0A06}
+		{633EF881-ACB3-478C-BE82-173CA7037B81} = {18A0E7FA-976B-452E-8FCD-87A9A712DED0}
+		{60A19D30-5572-432C-90A3-2577CB2C4AC9} = {88C0EAE5-F8A6-41FE-8AAA-9AECC50F0A06}
+		{1A6CA948-9F75-4463-B897-5E7B3AA65F91} = {60A19D30-5572-432C-90A3-2577CB2C4AC9}
+		{E7227EC0-CC7A-4A7A-AAD0-194555070375} = {88C0EAE5-F8A6-41FE-8AAA-9AECC50F0A06}
+		{41E6C28A-0CD4-48E4-AD8B-6AE525EAA7F3} = {E7227EC0-CC7A-4A7A-AAD0-194555070375}
+	EndGlobalSection
+EndGlobal
