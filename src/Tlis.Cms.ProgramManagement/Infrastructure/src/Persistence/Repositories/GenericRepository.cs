@@ -17,7 +17,7 @@ internal abstract class GenericRepository<TEntity>(ProgramManagementDbContext co
 
     protected readonly ProgramManagementDbContext context = context;
 
-    public Task<TEntity?> GetByIdAsync(Guid id, bool asTracking)
+    public virtual Task<TEntity?> GetByIdAsync(Guid id, bool asTracking)
     {
         var query = ConfigureTracking(DbSet.AsQueryable(), asTracking);
 

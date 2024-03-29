@@ -1,5 +1,6 @@
 using Tlis.Cms.ProgramManagement.Api.Extensions;
 using Tlis.Cms.ProgramManagement.Infrastructure;
+using Tlis.Cms.ProgramManagement.Application;
 
 namespace Tlis.Cms.ProgramManagement.Api
 {
@@ -18,10 +19,10 @@ namespace Tlis.Cms.ProgramManagement.Api
             builder.Services.ConfigureAuthorization(builder.Configuration);
 
             builder.Logging.AddConsole();
-            // builder.Logging.ConfigureOtel();
-            // builder.Services.ConfigureOtel();
+            builder.Logging.ConfigureOtel();
+            builder.Services.ConfigureOtel();
 
-            // builder.Services.AddApplication();
+            builder.Services.AddApplication();
             builder.Services.AddInfrastructure(builder.Configuration);
 
             var app = builder.Build();
