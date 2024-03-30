@@ -7,7 +7,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence;
 
 public class ProgramManagementDbContext(DbContextOptions options) : DbContext(options), IProgramManagementDbContext
 {
-    public DbSet<Program> Show { get; set; } = null!;
+    public DbSet<Program> Program { get; set; } = null!;
 
     public DbSet<Broadcast> Broadcast { get; set; } = null!;
 

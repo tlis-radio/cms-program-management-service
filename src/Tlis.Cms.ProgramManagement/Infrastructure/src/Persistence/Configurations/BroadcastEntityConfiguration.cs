@@ -12,8 +12,6 @@ public class BroadcastEntityConfiguration : IEntityTypeConfiguration<Broadcast>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd().HasValueGenerator((_, _) => new GuidValueGenerator());
 
-        builder.HasIndex(x => x.Name).IsUnique();
-
         builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Property(x => x.ShowId).IsRequired();
         builder.Property(x => x.ProgramId).IsRequired();

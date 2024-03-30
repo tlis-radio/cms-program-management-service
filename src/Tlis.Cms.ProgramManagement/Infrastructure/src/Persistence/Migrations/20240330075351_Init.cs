@@ -15,7 +15,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                 name: "cms_program_management");
 
             migrationBuilder.CreateTable(
-                name: "show",
+                name: "program",
                 schema: "cms_program_management",
                 columns: table => new
                 {
@@ -27,7 +27,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_show", x => x.id);
+                    table.PrimaryKey("pk_program", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,33 +47,19 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                 {
                     table.PrimaryKey("pk_broadcast", x => x.id);
                     table.ForeignKey(
-                        name: "fk_broadcast_show_program_id",
+                        name: "fk_broadcast_program_program_id",
                         column: x => x.program_id,
                         principalSchema: "cms_program_management",
-                        principalTable: "show",
+                        principalTable: "program",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "ix_broadcast_name",
-                schema: "cms_program_management",
-                table: "broadcast",
-                column: "name",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "ix_broadcast_program_id",
                 schema: "cms_program_management",
                 table: "broadcast",
                 column: "program_id");
-
-            migrationBuilder.CreateIndex(
-                name: "ix_show_name",
-                schema: "cms_program_management",
-                table: "show",
-                column: "name",
-                unique: true);
         }
 
         /// <inheritdoc />
@@ -84,7 +70,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                 schema: "cms_program_management");
 
             migrationBuilder.DropTable(
-                name: "show",
+                name: "program",
                 schema: "cms_program_management");
         }
     }

@@ -1,12 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramCreateRequests;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramUpdateRequests;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses;
+using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramGetWeekScheduleResponses;
+using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramPaginationGetResponses;
 
 namespace Tlis.Cms.ProgramManagement.Api.Controllers.Base;
 
@@ -48,4 +51,24 @@ public sealed class ProgramController(IMediator mediator) : BaseController(media
     [SwaggerOperation("Delete program")]
     public ValueTask<ActionResult> DeleteProgram([FromRoute] Guid id)
         => HandleDelete(new ProgramDeleteRequest { Id = id });
+
+    [HttpGet("pagination")]
+    [AllowAnonymous]
+    [Produces(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(typeof(PaginationResponse<ProgramPaginationGetResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    [SwaggerOperation("Paging programs")]
+    public ValueTask<ActionResult<PaginationResponse<ProgramPaginationGetResponse>>> Pagination([FromQuery] ProgramPaginationGetRequest request)
+        => HandleGet(request);
+
+    [HttpGet("week-schedule")]
+    [AllowAnonymous]
+    [Produces(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(typeof(ProgramGetWeekScheduleResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    [SwaggerOperation("Get week schedule")]
+    public ValueTask<ActionResult<ProgramGetWeekScheduleResponse>> Pagination()
+        => HandleGet(new ProgramGetWeekScheduleRequest());
 }

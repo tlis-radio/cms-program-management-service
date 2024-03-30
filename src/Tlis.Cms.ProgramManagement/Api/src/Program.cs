@@ -26,7 +26,7 @@ namespace Tlis.Cms.ProgramManagement.Api
             builder.Services.AddInfrastructure(builder.Configuration);
 
             var app = builder.Build();
-            
+
             app.UseExceptionHandler();
             app.UseStatusCodePages();
 

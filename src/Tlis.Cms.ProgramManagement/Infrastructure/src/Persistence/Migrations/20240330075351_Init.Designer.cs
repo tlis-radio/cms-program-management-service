@@ -12,7 +12,7 @@ using Tlis.Cms.ProgramManagement.Infrastructure.Persistence;
 namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ProgramManagementDbContext))]
-    [Migration("20240329151713_Init")]
+    [Migration("20240330075351_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -62,10 +62,6 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_broadcast");
 
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasDatabaseName("ix_broadcast_name");
-
                     b.HasIndex("ProgramId")
                         .HasDatabaseName("ix_broadcast_program_id");
 
@@ -98,13 +94,9 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("Id")
-                        .HasName("pk_show");
+                        .HasName("pk_program");
 
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasDatabaseName("ix_show_name");
-
-                    b.ToTable("show", "cms_program_management");
+                    b.ToTable("program", "cms_program_management");
                 });
 
             modelBuilder.Entity("Tlis.Cms.ProgramManagement.Domain.Entities.Broadcast", b =>
@@ -114,7 +106,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                         .HasForeignKey("ProgramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_broadcast_show_program_id");
+                        .HasConstraintName("fk_broadcast_program_program_id");
                 });
 
             modelBuilder.Entity("Tlis.Cms.ProgramManagement.Domain.Entities.Program", b =>
