@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramCreateRequests;
@@ -5,12 +6,16 @@ using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramUpdat
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramGetWeekScheduleResponses;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramPaginationGetResponses;
 using Tlis.Cms.ProgramManagement.Domain.Entities;
+using Tlis.Cms.ProgramManagement.Infrastructure.HttpServices.Dtos;
 
 namespace Tlis.Cms.ProgramManagement.Application.Mappers;
 
 internal static class ProgramMapper
 {
-    internal static ProgramGetWeekScheduleResponseProgram? MapToProgramGetWeekScheduleResponseProgram(Program? entity)
+    internal static ProgramGetWeekScheduleResponseProgram? MapToProgramGetWeekScheduleResponseProgram(
+        Program? entity,
+        ImageDto heroImage,
+        Dictionary<Guid, ShowDto> shows)
     {
         if (entity == null)
         {
@@ -23,8 +28,14 @@ internal static class ProgramMapper
             Name = entity.Name,
             Description = entity.Description,
             Date = entity.Date,
-            HeroImageId = entity.HeroImageId,
-            Broadcasts = entity.Broadcasts.Select(MapToProgramGetWeekScheduleResponseProgramBroadcast).ToList()
+            HeroImage = new ProgramGetWeekScheduleResponseProgramImage
+            {
+                Id = heroImage.Id,
+                Url = heroImage.Url,
+                Height = heroImage.Height,
+                Width = heroImage.Width
+            },
+            Broadcasts = entity.Broadcasts.Select(x => MapToProgramGetWeekScheduleResponseProgramBroadcast(x, shows)).ToList()
         };
     }
 
@@ -116,8 +127,17 @@ internal static class ProgramMapper
         };
     }
 
-    private static ProgramGetWeekScheduleResponseProgramBroadcast MapToProgramGetWeekScheduleResponseProgramBroadcast(Broadcast entity)
+    private static ProgramGetWeekScheduleResponseProgramBroadcast MapToProgramGetWeekScheduleResponseProgramBroadcast(
+        Broadcast entity,
+        Dictionary<Guid, ShowDto> shows)
     {
+        var found = shows.TryGetValue(entity.ShowId, out var showDto);
+
+        if (!found || showDto == null)
+        {
+            throw new Exception("Show not found");
+        }
+
         return new ProgramGetWeekScheduleResponseProgramBroadcast
         {
             Id = entity.Id,
@@ -125,7 +145,19 @@ internal static class ProgramMapper
             Description = entity.Description,
             StartDate = entity.StartDate,
             EndDate = entity.EndDate,
-            ShowId = entity.ShowId
+            Show = new ProgramGetWeekScheduleResponseProgramBroadcastShow
+            {
+                Id = showDto.Id,
+                Name = showDto.Name,
+                Description = showDto.Description,
+                CreatedDate = showDto.CreatedDate,
+                ProfileImageId = showDto.ProfileImageId,
+                Moderators = showDto.Moderators.Select(x => new ProgramGetWeekScheduleResponseProgramBroadcastShowModerator
+                {
+                    Id = x.Id,
+                    Nickname = x.Nickname
+                }).ToList()
+            }
         };
     }
 }

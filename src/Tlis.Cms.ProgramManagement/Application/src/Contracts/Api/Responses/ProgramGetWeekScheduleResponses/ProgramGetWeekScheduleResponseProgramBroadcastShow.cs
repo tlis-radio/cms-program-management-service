@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramGetWeekScheduleResponses;
 
-public sealed class ProgramGetWeekScheduleResponseProgram
+public sealed class ProgramGetWeekScheduleResponseProgramBroadcastShow
 {
     [JsonRequired]
     public Guid Id { get; set; }
@@ -16,11 +16,10 @@ public sealed class ProgramGetWeekScheduleResponseProgram
     public required string Description { get; set; }
 
     [JsonRequired]
-    public required ProgramGetWeekScheduleResponseProgramImage HeroImage { get; set; }
+    public List<ProgramGetWeekScheduleResponseProgramBroadcastShowModerator> Moderators { get; set; } = [];
 
     [JsonRequired]
-    public DateTime Date { get; set; }
+    public DateOnly CreatedDate { get; set; }
 
-    [JsonRequired]
-    public List<ProgramGetWeekScheduleResponseProgramBroadcast> Broadcasts { get; set; } = [];
+    public Guid? ProfileImageId { get; set; }
 }

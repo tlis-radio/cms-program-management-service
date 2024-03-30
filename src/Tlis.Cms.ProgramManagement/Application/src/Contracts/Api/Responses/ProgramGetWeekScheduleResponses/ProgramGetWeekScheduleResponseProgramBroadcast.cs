@@ -21,5 +21,5 @@ public sealed class ProgramGetWeekScheduleResponseProgramBroadcast
     public DateTime EndDate { get; set; }
 
     [JsonRequired]
-    public Guid ShowId { get; set; }
+    public required ProgramGetWeekScheduleResponseProgramBroadcastShow Show { get; set; }
 }
