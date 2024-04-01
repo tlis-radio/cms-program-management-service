@@ -1,11 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using System.Net.Mime;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using Tlis.Cms.ProgramManagement.Api.Constants;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests;
-using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramCreateRequests;
-using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses;
 
 namespace Tlis.Cms.ProgramManagement.Api.Controllers.Base;
 
@@ -14,7 +12,7 @@ namespace Tlis.Cms.ProgramManagement.Api.Controllers.Base;
 public sealed class BroadcastController(IMediator mediator) : BaseController(mediator)
 {
     [HttpDelete("{id:guid}")]
-    // [Authorize(Policy.ProgramDelete)]
+    [Authorize(Policy.ProgramDelete)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]

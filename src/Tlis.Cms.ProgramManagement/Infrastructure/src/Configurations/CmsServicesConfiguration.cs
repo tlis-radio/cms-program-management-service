@@ -4,5 +4,5 @@ internal sealed class CmsServicesConfiguration
 {
     public required HttpServiceConfiguration ShowManagement { get; set; }
 
-    public required HttpServiceConfiguration ImageManagement { get; set; }
+    public required HttpServiceConfiguration ImageAssetManagement { get; set; }
 }

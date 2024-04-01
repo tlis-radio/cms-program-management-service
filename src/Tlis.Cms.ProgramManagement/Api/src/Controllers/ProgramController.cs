@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using Tlis.Cms.ProgramManagement.Api.Constants;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramCreateRequests;
 using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramUpdateRequests;
@@ -18,7 +19,7 @@ namespace Tlis.Cms.ProgramManagement.Api.Controllers.Base;
 public sealed class ProgramController(IMediator mediator) : BaseController(mediator)
 {
     [HttpPost]
-    // [Authorize(Policy.ProgramWrite)]
+    [Authorize(Policy.ProgramWrite)]
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
@@ -29,7 +30,7 @@ public sealed class ProgramController(IMediator mediator) : BaseController(media
         => HandlePost(request);
 
     [HttpPut("{id:guid}")]
-    // [Authorize(Policy.ProgramWrite)]
+    [Authorize(Policy.ProgramWrite)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -43,7 +44,7 @@ public sealed class ProgramController(IMediator mediator) : BaseController(media
     }
 
     [HttpDelete("{id:guid}")]
-    // [Authorize(Policy.ProgramDelete)]
+    [Authorize(Policy.ProgramDelete)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]

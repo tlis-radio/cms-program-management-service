@@ -12,7 +12,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.HttpServices;
 internal sealed class ImageManagementHttpService(
     HttpClient client,
     IOptions<CmsServicesConfiguration> options)
-    : BaseHttpService(client, options.Value.ImageManagement), IImageManagementHttpService
+    : BaseHttpService(client, options.Value.ImageAssetManagement), IImageManagementHttpService
 {
     public Task<ImageDto> GetImageAsync(Guid id) => GetAsync<ImageDto>($"/image/{id}");
 }
