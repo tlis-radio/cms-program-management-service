@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties": {
+    "spec": {
+      "properties": {
+        "replicas": {
+          "type": "integer"
+        },
+        "imagePullSecrets": {
+          "type": "string"
+        }
+      }
+    },
+    "config": {
+      "properties": {
+        "connectionStrings": {
+          "type": "object",
+          "properties": {
+            "postgres": {
+              "type": "string"
+            }
+          }
+        },
+        "jwt": {
+          "type": "object",
+          "properties": {
+            "audience": {
+              "type": "string"
+            },
+            "authority": {
+              "type": "string"
+            }
+          }
+        },
+        "cmsServices": {
+          "type": "object",
+          "properties": {
+            "showManagement": {
+              "type": "object",
+              "properties": {
+                "baseAddress": {
+                  "type": "string"
+                }
+              }
+            },
+            "imageAssetManagement": {
+              "type": "object",
+              "properties": {
+                "baseAddress": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

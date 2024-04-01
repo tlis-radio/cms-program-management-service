@@ -1,0 +1,15 @@
+spec:
+  replicas: 1
+  imagePullSecrets: ""
+
+config:
+  connectionStrings:
+    postgres: ""
+  jwt:
+    audience: ""
+    authority: ""
+  cmsServices:
+    showManagement:
+      baseAddress:
+    imageAssetManagement:
+      baseAddress:
