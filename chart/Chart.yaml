@@ -1,9 +1,9 @@
 apiVersion: v2
-name: cms-image-asset-management
+name: cms-program-management
 version: 1.0.0
-description: Cms image asset managemet
+description: Cms program managemet
 type: application
 keywords:
   - cms
-  - image-asset-management
+  - program-management
 home: www.tlis.sk
