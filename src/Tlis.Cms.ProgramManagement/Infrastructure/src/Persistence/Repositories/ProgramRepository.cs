@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Tlis.Cms.ProgramManagement.Domain.Entities;
@@ -54,7 +55,7 @@ internal sealed class ProgramRepository(ProgramManagementDbContext dbContext)
             DateTime.Today.Second,
             DateTimeKind.Utc);
 
-        var monday = today.AddDays(-(int)today.DayOfWeek + (int)DayOfWeek.Monday);
+        var monday = today.AddDays(-GetDayOfWeek(today.DayOfWeek) + GetDayOfWeek(DayOfWeek.Monday));
         var saturday = monday.AddDays(6);
 
         var query = ConfigureTracking(DbSet.AsQueryable(), false);
@@ -63,5 +64,20 @@ internal sealed class ProgramRepository(ProgramManagementDbContext dbContext)
             .Include(x => x.Broadcasts)
             .Where(x => x.Date >= monday && x.Date <= saturday)
             .ToListAsync();
+    }
+
+    private int GetDayOfWeek(DayOfWeek dayOfWeek)
+    {
+        return dayOfWeek switch
+        {
+            DayOfWeek.Monday => 0,
+            DayOfWeek.Tuesday => 1,
+            DayOfWeek.Wednesday => 2,
+            DayOfWeek.Thursday => 3,
+            DayOfWeek.Friday => 4,
+            DayOfWeek.Saturday => 5,
+            DayOfWeek.Sunday => 6,
+            _ => throw new ArgumentOutOfRangeException(nameof(dayOfWeek), dayOfWeek, null)
+        };
     }
 }

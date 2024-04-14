@@ -1,6 +1,7 @@
 using Tlis.Cms.ProgramManagement.Api.Extensions;
 using Tlis.Cms.ProgramManagement.Infrastructure;
 using Tlis.Cms.ProgramManagement.Application;
+using Microsoft.AspNetCore.Localization;
 
 namespace Tlis.Cms.ProgramManagement.Api
 {
@@ -26,6 +27,11 @@ namespace Tlis.Cms.ProgramManagement.Api
             builder.Services.AddInfrastructure(builder.Configuration);
 
             var app = builder.Build();
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("sk-SK")
+            });
 
             app.UseExceptionHandler();
             app.UseStatusCodePages();
