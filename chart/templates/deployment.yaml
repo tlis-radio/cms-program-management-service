@@ -33,7 +33,7 @@ spec:
               value: {{ .Values.config.otel.exporterOtlpEndpoint }}
             - name: OTEL_EXPORTER_OTLP_PROTOCOL
               value: grpc
-            - OTEL_RESOURCE_ATTRIBUTES:
+            - name: OTEL_RESOURCE_ATTRIBUTES:
               value: deployment.environment={{ .Values.environment }}
       initContainers:
         - name: ef-migration
