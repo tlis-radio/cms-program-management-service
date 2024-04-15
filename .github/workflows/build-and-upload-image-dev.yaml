@@ -104,4 +104,5 @@ jobs:
         --set config.cmsServices.showManagement.baseAddress="${{ secrets.SHOW_MANAGEMENT_BASE_ADDRESS }}" \
         --set config.cmsServices.imageAssetManagement.baseAddress="${{ secrets.SHOW_ASSET_MANAGEMENT_BASE_ADDRESS }}" \
         --set environment="staging" \
-        --set config.otel.exporterOtlpEndpoint="${{ vars.OTEL_EXPORTER_OTLP_ENDPOINT }}"
+        --set config.otel.exporterOtlpEndpoint="${{ vars.OTEL_EXPORTER_OTLP_ENDPOINT }}" \
+        --set config.otel.exporterOtlpHeaders="${{ vars.OTEL_EXPORTER_OTLP_HEADERS }}"

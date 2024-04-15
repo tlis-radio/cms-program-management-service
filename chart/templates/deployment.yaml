@@ -32,9 +32,13 @@ spec:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: {{ .Values.config.otel.exporterOtlpEndpoint }}
             - name: OTEL_EXPORTER_OTLP_PROTOCOL
-              value: grpc
+              value: otlp
+            - OTEL_LOGS_EXPORTER:
+              value: otlp
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: deployment.environment={{ .Values.environment }}
+            - name: OTEL_EXPORTER_OTLP_HEADERS
+              value: {{ .Values.config.otel.exporterOtlpHeaders }}
       initContainers:
         - name: ef-migration
           image: tliscr.azurecr.io/cms-program-management-cli:{{ .Chart.AppVersion }}
