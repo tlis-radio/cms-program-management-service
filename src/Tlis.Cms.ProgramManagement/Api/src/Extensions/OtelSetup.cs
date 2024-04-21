@@ -13,7 +13,7 @@ public static class OtelSetup
     {
         services
             .AddOpenTelemetry()
-            .ConfigureResource(resource => resource.AddService(Telemetry.ServiceName))
+            // .ConfigureResource(resource => resource.AddService(Telemetry.ServiceName))
             .WithMetrics(metrics => metrics
                 .AddAspNetCoreInstrumentation()
                 .AddHttpClientInstrumentation()
