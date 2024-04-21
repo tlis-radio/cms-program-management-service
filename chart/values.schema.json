@@ -21,9 +21,6 @@
           "properties": {
             "exporterOtlpEndpoint": {
               "type": "string"
-            },
-            "exporterOtlpHeaders": {
-              "type": "string"
             }
           }
         },

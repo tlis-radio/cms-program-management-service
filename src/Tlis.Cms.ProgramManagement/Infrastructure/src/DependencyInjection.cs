@@ -1,9 +1,7 @@
-using Duende.AccessTokenManagement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Tlis.Cms.ProgramManagement.Infrastructure.Configurations;
 using Tlis.Cms.ProgramManagement.Infrastructure.HttpServices;
 using Tlis.Cms.ProgramManagement.Infrastructure.HttpServices.Interfaces;
@@ -22,18 +20,7 @@ public static class DependencyInjection
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
-        services.AddDbContext<IProgramManagementDbContext, ProgramManagementDbContext>(options =>
-            {
-                options
-                    .UseNpgsql(
-                        configuration.GetConnectionString("Postgres"),
-                        x => x.MigrationsHistoryTable(
-                            HistoryRepository.DefaultTableName, 
-                            "cms_program_management"))
-                    .UseSnakeCaseNamingConvention();
-            },
-            contextLifetime: ServiceLifetime.Transient,
-            optionsLifetime: ServiceLifetime.Singleton);
+        services.AddDbContext(configuration);
         services.AddTransient<IUnitOfWork, UnitOfWork>();
 
         services
@@ -43,5 +30,19 @@ public static class DependencyInjection
         services
             .AddHttpClient<IImageManagementHttpService, ImageManagementHttpService>()
             .AddStandardResilienceHandler();
+    }
+
+    public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddDbContext<IProgramManagementDbContext, ProgramManagementDbContext>(options =>
+            {
+                options
+                    .UseNpgsql(
+                        configuration.GetConnectionString("Postgres"),
+                        x => x.MigrationsHistoryTable(HistoryRepository.DefaultTableName, ProgramManagementDbContext.SCHEMA))
+                    .UseSnakeCaseNamingConvention();
+            },
+            contextLifetime: ServiceLifetime.Transient,
+            optionsLifetime: ServiceLifetime.Singleton);
     }
 }

@@ -7,7 +7,6 @@ environment: ""
 config:
   otel:
     exporterOtlpEndpoint: ""
-    exporterOtlpHeaders: ""
   connectionStrings:
     postgres: ""
   jwt:

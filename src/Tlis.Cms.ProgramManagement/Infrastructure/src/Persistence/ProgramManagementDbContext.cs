@@ -7,6 +7,8 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence;
 
 public class ProgramManagementDbContext(DbContextOptions options) : DbContext(options), IProgramManagementDbContext
 {
+    public readonly static string SCHEMA = "cms_program_management";
+
     public DbSet<Program> Program { get; set; } = null!;
 
     public DbSet<Broadcast> Broadcast { get; set; } = null!;
@@ -19,7 +21,7 @@ public class ProgramManagementDbContext(DbContextOptions options) : DbContext(op
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProgramManagementDbContext).Assembly);
-        modelBuilder.HasDefaultSchema("cms_program_management");
+        modelBuilder.HasDefaultSchema(SCHEMA);
         base.OnModelCreating(modelBuilder);
     }
 }
