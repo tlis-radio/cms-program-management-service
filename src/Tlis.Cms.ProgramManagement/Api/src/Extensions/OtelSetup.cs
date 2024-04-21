@@ -17,12 +17,15 @@ public static class OtelSetup
             .WithMetrics(metrics => metrics
                 .AddAspNetCoreInstrumentation()
                 .AddHttpClientInstrumentation()
+                .AddMeter("Microsoft.AspNetCore.Hosting")
+                .AddMeter("Microsoft.AspNetCore.Server.Kestrel")
                 .AddOtlpExporter())
             .WithTracing(tracing => tracing
                 .AddAspNetCoreInstrumentation()
                 .AddEntityFrameworkCoreInstrumentation()
                 .AddNpgsql()
                 .AddHttpClientInstrumentation()
+                .AddConsoleExporter()
                 .AddOtlpExporter());
     }
 
