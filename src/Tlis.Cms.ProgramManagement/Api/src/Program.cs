@@ -20,8 +20,8 @@ namespace Tlis.Cms.ProgramManagement.Api
             builder.Services.ConfigureAuthorization(builder.Configuration);
 
             builder.Logging.AddConsole();
-            builder.Logging.ConfigureOtel();
-            builder.Services.ConfigureOtel();
+            builder.Logging.ConfigureOtel(builder.Environment);
+            builder.Services.ConfigureOtel(builder.Environment);
 
             builder.Services.AddApplication();
             builder.Services.AddInfrastructure(builder.Configuration);
