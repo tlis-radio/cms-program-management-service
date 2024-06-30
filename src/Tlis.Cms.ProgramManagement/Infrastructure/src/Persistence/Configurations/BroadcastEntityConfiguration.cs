@@ -14,19 +14,11 @@ public class BroadcastEntityConfiguration : IEntityTypeConfiguration<Broadcast>
 
         builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Property(x => x.ShowId).IsRequired();
-        builder.Property(x => x.ProgramId).IsRequired();
         builder.Property(x => x.Name).IsRequired();
+        builder.Property(x => x.ImageId).IsRequired();
+        builder.Property(x => x.ExternalUrl);
         builder.Property(x => x.Description).IsRequired();
         builder.Property(x => x.StartDate).IsRequired();
         builder.Property(x => x.EndDate).IsRequired();
-
-        builder.HasIndex(x => x.ProgramId);
-        
-        builder
-            .HasOne<Program>()
-            .WithMany(x => x.Broadcasts)
-            .HasForeignKey(x => x.ProgramId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
     }
 }

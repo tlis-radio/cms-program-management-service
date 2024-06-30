@@ -5,8 +5,6 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Interfaces;
 
 public interface IProgramManagementDbContext
 {
-    public DbSet<Program> Program { get; set; }
-
     public DbSet<Broadcast> Broadcast { get; set; }
 
     public int SaveChanges();

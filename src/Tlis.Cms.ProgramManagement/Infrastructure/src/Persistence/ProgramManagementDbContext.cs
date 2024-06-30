@@ -9,8 +9,6 @@ public class ProgramManagementDbContext(DbContextOptions options) : DbContext(op
 {
     public readonly static string SCHEMA = "cms_program_management";
 
-    public DbSet<Program> Program { get; set; } = null!;
-
     public DbSet<Broadcast> Broadcast { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

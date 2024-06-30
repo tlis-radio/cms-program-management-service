@@ -1,12 +1,14 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramGetWeekScheduleResponses;
+namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses;
 
-public sealed class ProgramGetWeekScheduleResponseProgramBroadcast
+public sealed class BroadcastDetailsGetResponse
 {
     [JsonRequired]
     public Guid Id { get; set; }
+
+    public BroadcastDetailsGetResponseImage? Image { get; set; }
 
     [JsonRequired]
     public required string Name { get; set; }
@@ -21,5 +23,5 @@ public sealed class ProgramGetWeekScheduleResponseProgramBroadcast
     public DateTime EndDate { get; set; }
 
     [JsonRequired]
-    public required ProgramGetWeekScheduleResponseProgramBroadcastShow Show { get; set; }
+    public required BroadcastDetailsGetResponseShow Show { get; set; }
 }

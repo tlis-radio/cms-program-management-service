@@ -12,8 +12,8 @@ using Tlis.Cms.ProgramManagement.Infrastructure.Persistence;
 namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ProgramManagementDbContext))]
-    [Migration("20240330075351_Init")]
-    partial class Init
+    [Migration("20240630101528_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,14 +42,20 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("end_date");
 
+                    b.Property<string>("ExternalUrl")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("external_url");
+
+                    b.Property<Guid?>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("uuid")
+                        .HasColumnName("image_id");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
-
-                    b.Property<Guid>("ProgramId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("program_id");
 
                     b.Property<Guid>("ShowId")
                         .HasColumnType("uuid")
@@ -62,56 +68,7 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_broadcast");
 
-                    b.HasIndex("ProgramId")
-                        .HasDatabaseName("ix_broadcast_program_id");
-
                     b.ToTable("broadcast", "cms_program_management");
-                });
-
-            modelBuilder.Entity("Tlis.Cms.ProgramManagement.Domain.Entities.Program", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("date");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("description");
-
-                    b.Property<Guid>("HeroImageId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("hero_image_id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id")
-                        .HasName("pk_program");
-
-                    b.ToTable("program", "cms_program_management");
-                });
-
-            modelBuilder.Entity("Tlis.Cms.ProgramManagement.Domain.Entities.Broadcast", b =>
-                {
-                    b.HasOne("Tlis.Cms.ProgramManagement.Domain.Entities.Program", null)
-                        .WithMany("Broadcasts")
-                        .HasForeignKey("ProgramId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_broadcast_program_program_id");
-                });
-
-            modelBuilder.Entity("Tlis.Cms.ProgramManagement.Domain.Entities.Program", b =>
-                {
-                    b.Navigation("Broadcasts");
                 });
 #pragma warning restore 612, 618
         }

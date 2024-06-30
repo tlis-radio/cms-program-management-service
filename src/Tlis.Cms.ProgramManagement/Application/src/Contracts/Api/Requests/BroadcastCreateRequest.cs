@@ -1,9 +1,11 @@
 using System;
 using System.Text.Json.Serialization;
+using MediatR;
+using Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses;
 
-namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramCreateRequests;
+namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests;
 
-public sealed class ProgramCreateRequestBroadcast
+public sealed class BroadcastCreateRequest : IRequest<BaseCreateResponse>
 {
     [JsonRequired]
     public required string Name { get; set; }

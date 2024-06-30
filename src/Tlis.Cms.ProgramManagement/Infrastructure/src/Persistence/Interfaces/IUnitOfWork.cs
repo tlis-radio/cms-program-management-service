@@ -7,8 +7,6 @@ public interface IUnitOfWork
 {
     IBroadcastRepository BroadcastRepository { get; }
 
-    IProgramRepository ProgramRepository { get; }
-
     void SetStateUnchanged<TEntity>(params TEntity[] entities) where TEntity : class;
 
     /// <exception cref="EntityAlreadyExistsException">Thrown when a unique constraint is violated</exception>

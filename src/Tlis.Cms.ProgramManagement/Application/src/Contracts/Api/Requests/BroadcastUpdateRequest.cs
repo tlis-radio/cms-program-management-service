@@ -1,11 +1,12 @@
 using System;
 using System.Text.Json.Serialization;
+using MediatR;
 
-namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses.ProgramPaginationGetResponses;
+namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests;
 
-public sealed class ProgramPaginationGetResponseBroadcast
+public sealed class BroadcastUpdateRequest : IRequest<bool>
 {
-    [JsonRequired]
+    [JsonIgnore]
     public Guid Id { get; set; }
 
     [JsonRequired]

@@ -1,11 +1,12 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Requests.ProgramUpdateRequests;
+namespace Tlis.Cms.ProgramManagement.Application.Contracts.Api.Responses;
 
-public sealed class ProgramUpdateRequestBroadcast
+public sealed class BroadcastPaginationGetResponse
 {
-    public Guid? Id { get; set; }
+    [JsonRequired]
+    public Guid Id { get; set; }
 
     [JsonRequired]
     public required string Name { get; set; }

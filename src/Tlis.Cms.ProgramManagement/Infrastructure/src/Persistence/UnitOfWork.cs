@@ -13,13 +13,9 @@ namespace Tlis.Cms.ProgramManagement.Infrastructure.Persistence;
 
 public class UnitOfWork : IDisposable, IUnitOfWork
 {
-    public IProgramRepository ProgramRepository => _lazyProgramRepository.Value;
-
     public IBroadcastRepository BroadcastRepository => _lazyBroadcastRepository.Value;
     
     private readonly Lazy<IBroadcastRepository> _lazyBroadcastRepository;
-
-    private readonly Lazy<IProgramRepository> _lazyProgramRepository;
 
     private bool _disposed;
 
@@ -32,7 +28,6 @@ public class UnitOfWork : IDisposable, IUnitOfWork
         _dbContext = dbContext;
         _logger = logger;
         _lazyBroadcastRepository = new(() => new BroadcastRepository(_dbContext));
-        _lazyProgramRepository = new(() => new ProgramRepository(_dbContext));
     }
 
     public void SetStateUnchanged<TEntity>(params TEntity[] entities) where TEntity : class

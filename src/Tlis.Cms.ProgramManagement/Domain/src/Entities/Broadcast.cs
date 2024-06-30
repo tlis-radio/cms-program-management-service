@@ -9,11 +9,15 @@ public class Broadcast : BaseEntity
 
     public string Description { get; set; } = null!;
 
+    public Guid? ImageId { get; set; }
+
+    public string ExternalUrl { get; set;} = null!;
+
+    // TODO: Guests
+
     public DateTime StartDate { get; set; }
 
     public DateTime EndDate { get; set; }
 
     public Guid ShowId { get; set; }
-
-    public Guid ProgramId { get; set; }
 }
