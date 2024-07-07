@@ -12,6 +12,7 @@ public static class BroadcastMapper
         return new Broadcast
         {
             Name = request.Name,
+            ExternalUrl = string.Empty, // TODO: sem sa budu davat veci ako url na slido atd.
             Description = request.Description,
             StartDate = request.StartDate,
             EndDate = request.EndDate,
