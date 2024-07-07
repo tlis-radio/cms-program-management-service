@@ -60,7 +60,7 @@ public sealed class BroadcastController(IMediator mediator) : BaseController(med
         return HandlePut(request);
     }
 
-    [HttpPut("{id:guid}/profile-image")]
+    [HttpPut("{id:guid}/image")]
     [Authorize(Policy.ProgramWrite)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
