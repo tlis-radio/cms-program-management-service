@@ -15,7 +15,7 @@ public class BroadcastEntityConfiguration : IEntityTypeConfiguration<Broadcast>
         builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Property(x => x.ShowId).IsRequired();
         builder.Property(x => x.Name).IsRequired();
-        builder.Property(x => x.ImageId).IsRequired();
+        builder.Property(x => x.ImageId);
         builder.Property(x => x.ExternalUrl);
         builder.Property(x => x.Description).IsRequired();
         builder.Property(x => x.StartDate).IsRequired();

@@ -17,7 +17,7 @@ public sealed class BroadcastController(IMediator mediator) : BaseController(med
     [HttpGet("{id:guid}")]
     [AllowAnonymous]
     [Produces(MediaTypeNames.Application.Json)]
-    [ProducesResponseType(typeof(BroadcastDetailsGetRequest), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(BroadcastDetailsGetResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
