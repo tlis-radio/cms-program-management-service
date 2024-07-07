@@ -59,6 +59,7 @@ public static class BroadcastMapper
     {
         return new BroadcastPaginationGetResponse
         {
+            Id = entity.Id,
             Name = entity.Name,
             Description = entity.Description,
             StartDate = entity.StartDate,
